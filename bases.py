@@ -24,6 +24,16 @@ def decode(digits, base):
     # TODO: Decode digits from any base (2 up to 36)
     # ...
 
+    digits = digits[::-1]
+    decimal_num = 0
+    for i in range(len(digits)):
+        digit = digits[i]
+        print(digit)
+        digit = int(digit, base=16)
+        decimal_num * base ** i
+
+
+
 
 def encode(number, base):
     """Encode given number in base 10 to digits in given base.
@@ -78,4 +88,4 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    main("A16", 16)
