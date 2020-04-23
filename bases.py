@@ -24,16 +24,13 @@ def decode(digits, base):
     # TODO: Decode digits from any base (2 up to 36)
     # ...
 
+    decimal_number = 0
     digits = digits[::-1]
-    decimal_num = 0
+
     for i in range(len(digits)):
-        digit = digits[i]
-        print(digit)
-        digit = int(digit, base=16)
-        decimal_num * base ** i
-
-
-
+        digit = int(digits[i], base=base) * base ** i
+        decimal_number += digit
+    return decimal_number
 
 def encode(number, base):
     """Encode given number in base 10 to digits in given base.
@@ -50,6 +47,16 @@ def encode(number, base):
     # ...
     # TODO: Encode number in any base (2 up to 36)
     # ...
+
+    result = number
+    digits = ""
+    while result > 0:
+        remainder = result % base
+        if base > 16:
+            remainder = (string.digits + string.ascii_uppercase)[remainder]
+        result = result // base
+        digits += str(remainder)
+    return digits[::-1]
 
 
 def convert(digits, base1, base2):
@@ -70,6 +77,8 @@ def convert(digits, base1, base2):
     # TODO: Convert digits from any base to any base (2 up to 36)
     # ...
 
+    encode(decode(digits, base1), base2)
+
 
 def main():
     """Read command-line arguments and convert given digits between bases."""
@@ -88,4 +97,6 @@ def main():
 
 
 if __name__ == '__main__':
-    main("A16", 16)
+    # main()
+    print(decode(11, 10))
+    print(encode(11, 17))
